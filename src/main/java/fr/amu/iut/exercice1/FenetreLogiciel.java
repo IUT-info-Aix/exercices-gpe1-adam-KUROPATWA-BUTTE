@@ -51,7 +51,39 @@ public class FenetreLogiciel extends Application {
         hbox.setAlignment(Pos.CENTER);
         root.setBottom(hbox);
 
-        Scene scene = new Scene(root, 350, 350);
+        GridPane grid = new GridPane();
+        Label NameText = new Label("Name:");
+        GridPane.setConstraints(NameText, 1, 0);
+        TextField name = new TextField();
+        GridPane.setConstraints(name, 2, 0);
+        Label EmailText = new Label("Email:");
+        GridPane.setConstraints(EmailText, 1, 2);
+        TextField email = new TextField();
+        GridPane.setConstraints(email, 2, 2);
+        Label PasswordText = new Label("Password:");
+        GridPane.setConstraints(PasswordText, 1, 3);
+        TextField password = new TextField();
+        GridPane.setConstraints(password, 2, 3);
+        grid.getChildren().addAll(NameText, name, email, EmailText, PasswordText, password);
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+
+        HBox hboxcenter = new HBox();
+        Button submit = new Button("Submit");
+        Button cancel = new Button("Cancel");
+        hboxcenter.getChildren().addAll(submit, cancel);
+        hboxcenter.setAlignment(Pos.CENTER);
+        hboxcenter.setSpacing(10);
+
+        VBox vboxcenter = new VBox();
+        vboxcenter.getChildren().addAll(grid, hboxcenter);
+        vboxcenter.setAlignment(Pos.CENTER);
+        vboxcenter.setSpacing(10);
+
+        root.setCenter(vboxcenter);
+
+        Scene scene = new Scene(root, 500, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
