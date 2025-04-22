@@ -1,15 +1,13 @@
 package fr.amu.iut.exercice1;
 
 import javafx.application.Application;
-import javafx.scene.control.Button;
-import javafx.scene.control.Menu;
-import javafx.scene.control.MenuBar;
-import javafx.scene.control.MenuItem;
+import javafx.scene.control.*;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-
+import javafx.scene.layout.VBox;
+import javafx.geometry.Pos;
 
 
 public class FenetreLogiciel extends Application {
@@ -34,11 +32,24 @@ public class FenetreLogiciel extends Application {
         Menu menu2 = new Menu("Edit");
         menu2.getItems().addAll(ItemmenuEdit1, ItemmenuEdit2, ItemmenuEdit3);
         Menu menu3 = new Menu("Help");
-
         MenuBar menuBar = new MenuBar(menu1, menu2, menu3);
+        root.setTop(menuBar);
+
+        VBox vbox = new VBox();
+        Label label = new Label("Bouton");
+        Button button1 = new Button("Bouton1");
+        Button button2 = new Button("Bouton2");
+        Button button3 = new Button("Bouton3");
+        vbox.getChildren().addAll(label, button1, button2, button3);
+        vbox.setSpacing(10);
+        vbox.setAlignment(Pos.CENTER);
+        root.setLeft(vbox);
 
 
-        Scene scene = new Scene(menuBar, 350, 350);
+
+
+
+        Scene scene = new Scene(root, 350, 350);
         primaryStage.setScene(scene);
         primaryStage.show();
     }
