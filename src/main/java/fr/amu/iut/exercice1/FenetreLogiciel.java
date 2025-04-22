@@ -77,16 +77,16 @@ public class FenetreLogiciel extends Application {
         vboxcenter.setAlignment(Pos.CENTER);
         vboxcenter.setSpacing(10);
 
-        HBox hboxCenter = new HBox(vboxcenter);
-        HBox hboxLeft = new HBox(vboxleft);
-        Separator separatorvertical = new Separator(Orientation.VERTICAL);
-        HBox hBoxSepar = new HBox(hboxLeft, separatorvertical, hboxCenter);
+        Separator separatorLeft = new Separator(Orientation.VERTICAL);
+        HBox hboxLeftSep = new HBox(vboxleft, separatorLeft);
 
-        Separator separatohorizontal = new Separator(Orientation.HORIZONTAL);
-        VBox vboxSepar = new VBox(hBoxSepar, separatohorizontal, hboxbottom);
+        Separator separatorBottom = new Separator(Orientation.HORIZONTAL);
+        VBox hboxBasSep = new VBox(separatorBottom, hboxbottom);
 
 
-        root.setCenter(vboxSepar);
+        root.setBottom(hboxBasSep);
+        root.setLeft(hboxLeftSep);
+        root.setCenter(vboxcenter);
         root.setTop(menuBar);
         Scene scene = new Scene(root, 500, 500);
         primaryStage.setScene(scene);
