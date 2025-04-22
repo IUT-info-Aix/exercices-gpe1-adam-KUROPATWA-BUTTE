@@ -2,12 +2,12 @@ package fr.amu.iut.exercice1;
 
 import javafx.application.Application;
 import javafx.scene.control.*;
-import javafx.scene.layout.BorderPane;
-import javafx.scene.layout.Pane;
+import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
 import javafx.geometry.Pos;
+
+
 
 
 public class FenetreLogiciel extends Application {
@@ -45,9 +45,11 @@ public class FenetreLogiciel extends Application {
         vbox.setAlignment(Pos.CENTER);
         root.setLeft(vbox);
 
-
-
-
+        HBox hbox = new HBox();
+        Label label1 = new Label("Ceci est un label de bas de page");
+        hbox.getChildren().add(label1);
+        hbox.setAlignment(Pos.CENTER);
+        root.setBottom(hbox);
 
         Scene scene = new Scene(root, 350, 350);
         primaryStage.setScene(scene);
