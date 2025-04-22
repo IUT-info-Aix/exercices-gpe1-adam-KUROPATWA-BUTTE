@@ -1,13 +1,14 @@
 package fr.amu.iut.exercice1;
 
 import javafx.application.Application;
+import javafx.geometry.Orientation;
 import javafx.scene.control.*;
 import javafx.scene.layout.*;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
 import javafx.geometry.Pos;
 
-
+import java.nio.file.attribute.UserPrincipal;
 
 
 public class FenetreLogiciel extends Application {
@@ -21,35 +22,32 @@ public class FenetreLogiciel extends Application {
         MenuItem ItemmenuFile2 = new MenuItem("Open");
         MenuItem ItemmenuFile3 = new MenuItem("Save");
         MenuItem ItemmenuFile4 = new MenuItem("Close");
-
         MenuItem ItemmenuEdit1 = new MenuItem("Cut");
         MenuItem ItemmenuEdit2 = new MenuItem("Copy");
         MenuItem ItemmenuEdit3 = new MenuItem("Paste");
-
-
         Menu menu1 = new Menu("File");
         menu1.getItems().addAll(ItemmenuFile1, ItemmenuFile2, ItemmenuFile3, ItemmenuFile4);
         Menu menu2 = new Menu("Edit");
         menu2.getItems().addAll(ItemmenuEdit1, ItemmenuEdit2, ItemmenuEdit3);
         Menu menu3 = new Menu("Help");
         MenuBar menuBar = new MenuBar(menu1, menu2, menu3);
-        root.setTop(menuBar);
 
-        VBox vbox = new VBox();
+
+        VBox vboxleft = new VBox();
         Label label = new Label("Bouton");
         Button button1 = new Button("Bouton1");
         Button button2 = new Button("Bouton2");
         Button button3 = new Button("Bouton3");
-        vbox.getChildren().addAll(label, button1, button2, button3);
-        vbox.setSpacing(10);
-        vbox.setAlignment(Pos.CENTER);
-        root.setLeft(vbox);
+        vboxleft.getChildren().addAll(label, button1, button2, button3);
+        vboxleft.setSpacing(10);
+        vboxleft.setAlignment(Pos.CENTER);
 
-        HBox hbox = new HBox();
+
+        HBox hboxbottom = new HBox();
         Label label1 = new Label("Ceci est un label de bas de page");
-        hbox.getChildren().add(label1);
-        hbox.setAlignment(Pos.CENTER);
-        root.setBottom(hbox);
+        hboxbottom.getChildren().add(label1);
+        hboxbottom.setAlignment(Pos.CENTER);
+
 
         GridPane grid = new GridPane();
         Label NameText = new Label("Name:");
@@ -68,21 +66,28 @@ public class FenetreLogiciel extends Application {
         grid.setAlignment(Pos.CENTER);
         grid.setHgap(10);
         grid.setVgap(10);
-
         HBox hboxcenter = new HBox();
         Button submit = new Button("Submit");
         Button cancel = new Button("Cancel");
         hboxcenter.getChildren().addAll(submit, cancel);
         hboxcenter.setAlignment(Pos.CENTER);
         hboxcenter.setSpacing(10);
-
         VBox vboxcenter = new VBox();
         vboxcenter.getChildren().addAll(grid, hboxcenter);
         vboxcenter.setAlignment(Pos.CENTER);
         vboxcenter.setSpacing(10);
 
-        root.setCenter(vboxcenter);
+        HBox hboxCenter = new HBox(vboxcenter);
+        HBox hboxLeft = new HBox(vboxleft);
+        Separator separatorvertical = new Separator(Orientation.VERTICAL);
+        HBox hBoxSepar = new HBox(hboxLeft, separatorvertical, hboxCenter);
 
+        Separator separatohorizontal = new Separator(Orientation.HORIZONTAL);
+        VBox vboxSepar = new VBox(hBoxSepar, separatohorizontal, hboxbottom);
+
+
+        root.setCenter(vboxSepar);
+        root.setTop(menuBar);
         Scene scene = new Scene(root, 500, 500);
         primaryStage.setScene(scene);
         primaryStage.show();
